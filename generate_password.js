@@ -35,6 +35,10 @@ function generatePassword(options) {
       character => !options.excludeCharacters.includes(character)
     )
   }
+  // prevent undefined error
+  if (collection.length === 0) {
+    return 'There is no valid character in your selection.'
+  }
   // 4. Generate random password
   let password = ''
   for (let i = 1; i <= options.length; i++) {
